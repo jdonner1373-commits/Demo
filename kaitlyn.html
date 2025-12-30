@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>An Ode to Kaitlyn Wallace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #1a1a1a;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: #fff;
+        }
+
+        /* Decorative squiggles - colors from her journey */
+        .squiggle {
+            position: absolute;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .squiggle-1 { top: 20px; left: -30px; width: 180px; height: 120px; }
+        .squiggle-2 { top: 80px; right: -20px; width: 160px; height: 100px; }
+        .squiggle-3 { top: 500px; left: -40px; width: 140px; height: 200px; }
+        .squiggle-4 { top: 450px; right: -30px; width: 120px; height: 150px; }
+        .squiggle-5 { top: 900px; left: -20px; width: 150px; height: 180px; }
+        .squiggle-6 { top: 850px; right: -30px; width: 170px; height: 160px; }
+        .squiggle-7 { top: 1300px; left: -25px; width: 160px; height: 140px; }
+        .squiggle-8 { top: 1350px; right: -35px; width: 150px; height: 170px; }
+        .squiggle-9 { bottom: 400px; left: -30px; width: 140px; height: 150px; }
+        .squiggle-10 { bottom: 350px; right: -25px; width: 160px; height: 140px; }
+        .squiggle-11 { bottom: 100px; left: -20px; width: 150px; height: 130px; }
+        .squiggle-12 { bottom: 50px; right: -30px; width: 140px; height: 150px; }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .nav-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            color: #1a1a1a;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 40px 20px 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f97316, #c73e3a, #d4af37, #0c2340);
+            padding: 5px;
+            margin: 0 auto 30px;
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #f5f5f5;
+        }
+
+        .profile-photo-placeholder {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #fef3e7, #fff5f5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 7vw, 56px);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #f97316, #c73e3a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: 20px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto 24px;
+        }
+
+        .tagline {
+            display: inline-block;
+            background: linear-gradient(135deg, #0c2340, #d4af37);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Journey Section */
+        .journey-section {
+            padding: 80px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+
+        .section-header p {
+            color: #666;
+            font-size: 18px;
+        }
+
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, #f97316, #c73e3a, #0c2340, #d4af37, #F5821F);
+            border-radius: 3px;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 45%;
+            padding: 24px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            text-align: right;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .timeline-year {
+            font-size: 13px;
+            font-weight: 600;
+            color: #999;
+            margin-bottom: 8px;
+        }
+
+        .timeline-title {
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+
+        .timeline-company {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .timeline-location {
+            font-size: 13px;
+            color: #888;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-location {
+            justify-content: flex-end;
+        }
+
+        /* Cities Section */
+        .cities-section {
+            padding: 80px 20px;
+            background: #fafafa;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cities-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .city-card {
+            background: white;
+            border-radius: 20px;
+            padding: 32px 24px;
+            text-align: center;
+            min-width: 160px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .city-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .city-icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 16px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .city-icon svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .city-name {
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .city-state {
+            font-size: 13px;
+            color: #888;
+        }
+
+        /* Education Section */
+        .education-section {
+            padding: 80px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .education-cards {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            max-width: 900px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .edu-card {
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            background: white;
+            border-radius: 24px;
+            padding: 40px 32px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .edu-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+        }
+
+        .edu-card.notre-dame::before {
+            background: linear-gradient(90deg, #0c2340, #d4af37);
+        }
+
+        .edu-card.mizzou::before {
+            background: linear-gradient(90deg, #F1B82D, #000000);
+        }
+
+        .edu-logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            font-weight: 700;
+        }
+
+        .edu-card.notre-dame .edu-logo {
+            background: #0c2340;
+            color: #d4af37;
+        }
+
+        .edu-card.mizzou .edu-logo {
+            background: #F1B82D;
+            color: #000;
+        }
+
+        .edu-school {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .edu-degree {
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 4px;
+        }
+
+        .edu-years {
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 16px;
+        }
+
+        .edu-activities {
+            font-size: 13px;
+            color: #777;
+            line-height: 1.6;
+        }
+
+        /* Qualities Section */
+        .qualities-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #fef9f6, #f6f9fe);
+            position: relative;
+            z-index: 1;
+        }
+
+        .qualities-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .quality {
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+            max-width: 280px;
+        }
+
+        .quality-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 20px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        .quality h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .quality p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-message {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            margin-bottom: 16px;
+        }
+
+        .footer-sub {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 32px;
+        }
+
+        .footer-icons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .footer-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .copyright {
+            color: #999;
+            font-size: 13px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(odd) {
+                flex-direction: column;
+                align-items: flex-start;
+                padding-left: 50px;
+            }
+
+            .timeline-content,
+            .timeline-item:nth-child(odd) .timeline-content {
+                width: 100%;
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-location {
+                justify-content: flex-start;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .squiggle {
+                opacity: 0.4;
+                transform: scale(0.5);
+            }
+
+            .education-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Decorative Squiggles - Colors from her journey: Audible orange, Latham red, Notre Dame gold/blue, Mizzou gold -->
+    <svg class="squiggle squiggle-1" viewBox="0 0 180 120" fill="none">
+        <path d="M10 60 Q30 20, 60 40 T110 30 T160 50" stroke="#f97316" stroke-width="12" stroke-linecap="round" fill="none"/>
+        <path d="M20 90 Q50 60, 80 80 T140 70" stroke="#F1B82D" stroke-width="10" stroke-linecap="round" fill="none"/>
+    </svg>
+
+    <svg class="squiggle squiggle-2" viewBox="0 0 160 100" fill="none">
+        <path d="M10 50 Q40 10, 70 40 T130 30 T150 60" stroke="#0c2340" stroke-width="12" stroke-linecap="round" fill="none"/>
+        <path d="M30 80 Q60 50, 100 70" stroke="#d4af37" stroke-width="10" stroke-linecap="round" fill="none"/>
+    </svg>
+
+    <svg class="squiggle squiggle-3" viewBox="0 0 140 200" fill="none">
+        <path d="M70 10 Q20 50, 60 90 T40 150 T80 190" stroke="#c73e3a" stroke-width="12" stroke-linecap="round" fill="none"/>
+        <path d="M100 30 Q60 80, 90 130" stroke="#f97316" stroke-width="10" stroke-linecap="round" fill="none"/>
+    </svg>
+
+    <svg class="squiggle squiggle-4" viewBox="0 0 120 150" fill="none">
+        <path d="M60 10 Q100 40, 70 80 T90 140" stroke="#d4af37" stroke-width="12" stroke-linecap="round" fill="none"/>
+        <path d="M30 50 Q70 70, 50 110" stroke="#0c2340" stroke-width="10" stroke-linecap="round" fill="none"/>
+    </svg>
+
+    <svg class="squiggle squiggle-5" viewBox="0 0 150 180" fill="none">
+        <path d="M80 10 Q30 50, 70 90 T50 150 T90 170" stroke="#1977f2" stroke-width="12" stroke-linecap="round" fill="none"/>
+        <path d="M110 40 Q70 80, 100 130" stroke="#F1B82D" stroke-width="10" stroke-linecap="round" fill="none"/>
+    </svg>
+
+    <svg class="squiggle squiggle-6" viewBox="0 0 170 160" fill="none">
+        <path d="M10 80 Q50 30, 90 60 T150 50 T160 100" stroke="#f97316" stroke-width="12" stroke-linecap="round" fill="none"/>
+        <path d="M30 120 Q80 90, 130 110" stroke="#c73e3a" stroke-width="10" stroke-linecap="round" fill="none"/>
+    </svg>
+
+    <svg class="squiggle squiggle-7" viewBox="0 0 160 140" fill="none">
+        <path d="M20 70 Q60 20, 100 50 T150 40" stroke="#0c2340" stroke-width="12" stroke-linecap="round" fill="none"/>
+        <path d="M10 110 Q50 80, 90 100 T140 90" stroke="#d4af37" stroke-width="10" stroke-linecap="round" fill="none"/>
+    </svg>
+
+    <svg class="squiggle squiggle-8" viewBox="0 0 150 170" fill="none">
+        <path d="M70 10 Q30 50, 60 90 T40 140 T80 160" stroke="#F1B82D" stroke-width="12" stroke-linecap="round" fill="none"/>
+        <path d="M100 30 Q60 70, 90 120" stroke="#000" stroke-width="10" stroke-linecap="round" fill="none"/>
+    </svg>
+
+    <svg class="squiggle squiggle-9" viewBox="0 0 140 150" fill="none">
+        <path d="M60 10 Q100 50, 70 90 T90 140" stroke="#c73e3a" stroke-width="12" stroke-linecap="round" fill="none"/>
+        <path d="M30 40 Q70 60, 50 100" stroke="#f97316" stroke-width="10" stroke-linecap="round" fill="none"/>
+    </svg>
+
+    <svg class="squiggle squiggle-10" viewBox="0 0 160 140" fill="none">
+        <path d="M20 60 Q60 20, 100 50 T150 40" stroke="#0c2340" stroke-width="12" stroke-linecap="round" fill="none"/>
+        <path d="M10 100 Q50 70, 90 90 T140 80" stroke="#1977f2" stroke-width="10" stroke-linecap="round" fill="none"/>
+    </svg>
+
+    <svg class="squiggle squiggle-11" viewBox="0 0 150 130" fill="none">
+        <path d="M20 50 Q60 10, 100 40 T140 30" stroke="#d4af37" stroke-width="12" stroke-linecap="round" fill="none"/>
+        <path d="M30 90 Q70 60, 110 80" stroke="#F1B82D" stroke-width="10" stroke-linecap="round" fill="none"/>
+    </svg>
+
+    <svg class="squiggle squiggle-12" viewBox="0 0 140 150" fill="none">
+        <path d="M50 10 Q90 50, 60 90 T80 140" stroke="#f97316" stroke-width="12" stroke-linecap="round" fill="none"/>
+        <path d="M20 40 Q60 60, 40 100" stroke="#c73e3a" stroke-width="10" stroke-linecap="round" fill="none"/>
+    </svg>
+
+    <!-- Navigation -->
+    <nav>
+        <span class="nav-title">An Ode to Excellence</span>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="profile-photo">
+            <div class="profile-photo-placeholder">KW</div>
+        </div>
+        <h1>Celebrating <span>Kaitlyn Wallace</span></h1>
+        <p class="subtitle">From Missouri roots to London lights, a remarkable journey through law, leadership, and making an impact.</p>
+        <span class="tagline">Associate Corporate Counsel at Audible</span>
+    </section>
+
+    <!-- Journey Timeline -->
+    <section class="journey-section">
+        <div class="section-header">
+            <h2>The Journey</h2>
+            <p>From journalism to the courtroom, a decade of growth</p>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year">2025 - Present</div>
+                    <div class="timeline-title">Associate Corporate Counsel</div>
+                    <div class="timeline-company" style="color: #f97316;">Audible</div>
+                    <div class="timeline-location">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#888"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        London, UK
+                    </div>
+                </div>
+                <div class="timeline-dot" style="background: #f97316;"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year">2021 - 2025</div>
+                    <div class="timeline-title">Corporate Associate</div>
+                    <div class="timeline-company" style="color: #c73e3a;">Latham & Watkins</div>
+                    <div class="timeline-location">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#888"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        London, UK
+                    </div>
+                </div>
+                <div class="timeline-dot" style="background: #c73e3a;"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year">2020</div>
+                    <div class="timeline-title">Legal Extern & Summer Associate</div>
+                    <div class="timeline-company" style="color: #0c2340;">Notre Dame & Latham</div>
+                    <div class="timeline-location">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#888"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        Chicago & South Bend, IN
+                    </div>
+                </div>
+                <div class="timeline-dot" style="background: #0c2340;"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year">2020</div>
+                    <div class="timeline-title">Operational Risk Extern</div>
+                    <div class="timeline-company" style="color: #1977f2;">Pete for America</div>
+                    <div class="timeline-location">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#888"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        South Bend, IN
+                    </div>
+                </div>
+                <div class="timeline-dot" style="background: #1977f2;"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year">2019</div>
+                    <div class="timeline-title">Legal Intern</div>
+                    <div class="timeline-company" style="color: #cd040b;">Verizon</div>
+                    <div class="timeline-location">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#888"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        Chicago, IL
+                    </div>
+                </div>
+                <div class="timeline-dot" style="background: #cd040b;"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year">2017 - 2018</div>
+                    <div class="timeline-title">Communication Specialist & PIO</div>
+                    <div class="timeline-company" style="color: #2e7d32;">Clay County Public Health</div>
+                    <div class="timeline-location">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#888"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        Liberty, MO
+                    </div>
+                </div>
+                <div class="timeline-dot" style="background: #2e7d32;"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year">2016</div>
+                    <div class="timeline-title">Intern</div>
+                    <div class="timeline-company" style="color: #002868;">U.S. Senator Claire McCaskill</div>
+                    <div class="timeline-location">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#888"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        Columbia, MO
+                    </div>
+                </div>
+                <div class="timeline-dot" style="background: #002868;"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year">2013 - 2017</div>
+                    <div class="timeline-title">Communications & Marketing</div>
+                    <div class="timeline-company" style="color: #00a651;">H&R Block, AAUW, Tnemec</div>
+                    <div class="timeline-location">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#888"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        Kansas City & Columbia, MO
+                    </div>
+                </div>
+                <div class="timeline-dot" style="background: #00a651;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cities Section -->
+    <section class="cities-section">
+        <div class="section-header">
+            <h2>Places Called Home</h2>
+            <p>From the heartland to across the pond</p>
+        </div>
+
+        <div class="cities-grid">
+            <div class="city-card">
+                <div class="city-icon" style="background: #fff0e6;">
+                    <svg viewBox="0 0 32 32" fill="#f97316"><path d="M16 2l-2 6h-6l5 4-2 6 5-4 5 4-2-6 5-4h-6z"/><rect x="12" y="18" width="8" height="12" rx="1"/></svg>
+                </div>
+                <div class="city-name">London</div>
+                <div class="city-state">United Kingdom</div>
+            </div>
+
+            <div class="city-card">
+                <div class="city-icon" style="background: #e6f2ff;">
+                    <svg viewBox="0 0 32 32" fill="#1977f2"><rect x="6" y="12" width="6" height="18"/><rect x="13" y="6" width="6" height="24"/><rect x="20" y="10" width="6" height="20"/></svg>
+                </div>
+                <div class="city-name">Chicago</div>
+                <div class="city-state">Illinois</div>
+            </div>
+
+            <div class="city-card">
+                <div class="city-icon" style="background: #e6f0e6;">
+                    <svg viewBox="0 0 32 32" fill="#0c2340"><path d="M16 4l-8 8v16h16V12l-8-8zm0 4l4 4v10h-8V12l4-4z"/><circle cx="16" cy="18" r="2" fill="#d4af37"/></svg>
+                </div>
+                <div class="city-name">South Bend</div>
+                <div class="city-state">Indiana</div>
+            </div>
+
+            <div class="city-card">
+                <div class="city-icon" style="background: #fef6e6;">
+                    <svg viewBox="0 0 32 32" fill="#F1B82D"><path d="M6 28h20v-4H6v4zm10-24l-10 8v4h20v-4l-10-8z"/></svg>
+                </div>
+                <div class="city-name">Columbia</div>
+                <div class="city-state">Missouri</div>
+            </div>
+
+            <div class="city-card">
+                <div class="city-icon" style="background: #ffe6e6;">
+                    <svg viewBox="0 0 32 32" fill="#c73e3a"><path d="M8 6h16v4H8zM6 12h20v16H6z"/><rect x="10" y="16" width="4" height="6" fill="white"/><rect x="18" y="16" width="4" height="6" fill="white"/></svg>
+                </div>
+                <div class="city-name">Kansas City</div>
+                <div class="city-state">Missouri</div>
+            </div>
+
+            <div class="city-card">
+                <div class="city-icon" style="background: #e8f5e9;">
+                    <svg viewBox="0 0 32 32" fill="#2e7d32"><circle cx="16" cy="16" r="10"/><path d="M16 8v8l6 4" stroke="white" stroke-width="2" fill="none"/></svg>
+                </div>
+                <div class="city-name">Liberty</div>
+                <div class="city-state">Missouri</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="education-section">
+        <div class="section-header">
+            <h2>Education</h2>
+            <p>Building a foundation for excellence</p>
+        </div>
+
+        <div class="education-cards">
+            <div class="edu-card notre-dame">
+                <div class="edu-logo">ND</div>
+                <div class="edu-school">Notre Dame Law School</div>
+                <div class="edu-degree">Juris Doctor (JD)</div>
+                <div class="edu-years">2018 - 2021</div>
+                <div class="edu-activities">Notre Dame Law Review<br>Business Law Forum<br>Women's Law Forum</div>
+            </div>
+
+            <div class="edu-card mizzou">
+                <div class="edu-logo">MU</div>
+                <div class="edu-school">University of Missouri</div>
+                <div class="edu-degree">B.A. Journalism</div>
+                <div class="edu-years">2013 - 2017</div>
+                <div class="edu-activities">Kappa Delta Sorority<br>International Student Ambassador<br>AAUW President<br>Business & Religious Studies Minor</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Qualities Section -->
+    <section class="qualities-section">
+        <div class="section-header">
+            <h2>What Makes Kaitlyn Exceptional</h2>
+            <p>A unique combination of talents and drive</p>
+        </div>
+
+        <div class="qualities-grid">
+            <div class="quality">
+                <div class="quality-icon" style="background: #fff0e6;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="#f97316"><path d="M12 2L4 7v10l8 5 8-5V7l-8-5zm0 2.5L18 8v8l-6 3.5L6 16V8l6-3.5z"/></svg>
+                </div>
+                <h3>Global Perspective</h3>
+                <p>From Missouri to London, bringing diverse experiences to every challenge</p>
+            </div>
+
+            <div class="quality">
+                <div class="quality-icon" style="background: #e6f0ff;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="#0c2340"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l4.59-4.58L18 11l-6 6z"/></svg>
+                </div>
+                <h3>Versatile Excellence</h3>
+                <p>Successfully transitioned from journalism to corporate law at the highest level</p>
+            </div>
+
+            <div class="quality">
+                <div class="quality-icon" style="background: #fef6e6;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="#d4af37"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                </div>
+                <h3>Civic Minded</h3>
+                <p>From Senate internships to public health, committed to making a difference</p>
+            </div>
+
+            <div class="quality">
+                <div class="quality-icon" style="background: #ffe6e6;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="#c73e3a"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                </div>
+                <h3>Community Leader</h3>
+                <p>AAUW President, Language Partner, and advocate for women in law</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-message">Here's to Kaitlyn!</div>
+        <p class="footer-sub">A brilliant legal mind, global citizen, and inspiration to many.</p>
+
+        <div class="footer-icons">
+            <div class="footer-icon" style="background: #f97316;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 2L4 7v10l8 5 8-5V7l-8-5z"/></svg>
+            </div>
+            <div class="footer-icon" style="background: #0c2340;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#d4af37"><path d="M12 3L4 9v12h16V9l-8-6z"/></svg>
+            </div>
+            <div class="footer-icon" style="background: #F1B82D;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="black"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+            </div>
+            <div class="footer-icon" style="background: #c73e3a;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            </div>
+        </div>
+
+        <p class="copyright">Made with appreciation</p>
+    </footer>
+</body>
+</html>
