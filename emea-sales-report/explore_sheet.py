@@ -25,7 +25,7 @@ def get_access_token():
         'aud': 'https://oauth2.googleapis.com/token',
         'iat': now,
         'exp': now + 3600,
-        'scope': 'https://www.googleapis.com/auth/spreadsheets.readonly'
+        'scope': 'https://www.googleapis.com/auth/spreadsheets.readonly https://www.googleapis.com/auth/drive.readonly'
     }
 
     # Sign JWT with private key
