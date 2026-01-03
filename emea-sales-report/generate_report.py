@@ -81,7 +81,7 @@ def analyze_deals(deals):
         if close_date < Q_START or close_date > Q_END:
             continue
 
-        if stage == 'Closed Won':
+        if 'Closed Won' in stage:
             week = get_week_number(close_date, Q_START)
             closed_won_by_week[week] += new_arr
             closed_won_deals.append({
@@ -92,7 +92,7 @@ def analyze_deals(deals):
                 'close_date': close_date,
                 'type': deal.get('Type', '')
             })
-        elif stage in ['Commit', 'Best Case', 'Pipeline']:
+        elif any(s in stage for s in ['Commit', 'Best Case', 'Pipeline']):
             pipeline_deals.append({
                 'account': deal.get('Account Name', ''),
                 'opportunity': deal.get('Opportunity Name', ''),
