@@ -1,0 +1,11 @@
+# Sensitive credentials - never commit
+credentials.json
+*.json
+
+# Python
+__pycache__/
+*.pyc
+
+# Generated outputs
+*.png
+output/
